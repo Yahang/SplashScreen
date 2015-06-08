@@ -5,17 +5,20 @@ var WhiteBody = require('./WhiteBody');
 function SplashScreen(mount) {
     // Extend Node
     Node.call(this);
+    this.setSizeMode('absolute', 'absolute')
+        .setAbsoluteSize(innerWidth, innerHeight);
     makeDarkBody.call(this);
     makeWhiteBody.call(this);
     debug.call(this);
+    init.call(this);
 }
 
 // Extend the prototype
 SplashScreen.prototype = Object.create(Node.prototype);
 
-SplashScreen.prototype.onMount = function onMount (parent, id) {
-   Node.prototype.onMount.call(this, parent, id);
-};
+// SplashScreen.prototype.onMount = function onMount (parent, id) {
+//    Node.prototype.onMount.call(this, parent, id);
+// };
 
 function debug() {
     if (typeof app == "object" && app.debug) {
@@ -35,6 +38,6 @@ function makeWhiteBody() {
 
 function init() {
     this.darkBody.animateInit();
-    this.whiteBody.animateInit();
+    // this.whiteBody.animateInit();
 }
 module.exports = SplashScreen;

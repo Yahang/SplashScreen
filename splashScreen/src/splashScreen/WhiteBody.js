@@ -9,3 +9,4 @@ function WhiteBody(mount) {
 // Extend the prototype
 WhiteBody.prototype = Object.create(Node.prototype);
 
+module.exports = WhiteBody;

@@ -1,8 +1,9 @@
 var Node = require('famous/core/Node');
 var DOMElement = require('famous/dom-renderables/DOMElement');
 var Position = require('famous/components/Position');
-//var Easing = require('famous/transitions/Easing');
+var Scale = require('famous/components/Scale');
 var Size = require('famous/components/size');
+var Align = require('famous/components/Align');
 //var FamousEngine = require('famous/core/FamousEngine');
 //var clock = FamousEngine.getClock();
 
@@ -28,14 +29,15 @@ function WhiteBody(mount) {
 
    this.titleNode
    	.setSizeMode('absolute', 'absolute')
-    .setAbsoluteSize(200, 100)
+    .setAbsoluteSize(innerWidth, 50)
     .setScale(1,1)
    	.setAlign(0.5, 0.25)
     .setMountPoint(0.5, 0.5)
     .setOrigin(0.5, 0.5);
 
     var titleElement = new DOMElement(this.titleNode, {
-    	tagName: 'h1',
+    	classes: ["appTitle"],
+    	tagName: 'div',
     	content: "Carousel"
     });
 
@@ -50,16 +52,14 @@ WhiteBody.prototype.animateInit = function () {
 };
 
 WhiteBody.prototype.animateFinal = function () {
-	this.titleNode
-   		.setSizeMode('absolute', 'absolute')
-    	//.setAbsoluteSize(100, 50)
-    	//.setScale(0.5,0.5)
-   		.setAlign(0.5, 0.05)
-    	.setMountPoint(0.5, 0.5)
-    	.setOrigin(0.5, 0.5);
+	var alignComp = new Align(this.titleNode);
+	alignComp.set(0.5, 0.055, 0, {
+		duration: 600,
+		curve: 'outBounce'
+	})
 
-    var whiteSizeComponent = new Size(this.titleNode);
-    whiteSizeComponent.setProportional(100, 50, 0, {
+    var whiteSizeComponent = new Scale(this.titleNode);
+    whiteSizeComponent.set(0.5, 0.5, 1, {
     	duration: 600,
     	curve: 'outBounce'
     });

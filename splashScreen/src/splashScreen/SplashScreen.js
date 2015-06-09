@@ -3,6 +3,7 @@ var DarkBody = require('./DarkBody');
 var WhiteBody = require('./WhiteBody');
 var FamousEngine = require('famous/core/FamousEngine');
 var clock = FamousEngine.getClock();
+var SoundEffect = require('./SoundEffect');
 
 function SplashScreen(mount) {
     // Extend Node
@@ -43,6 +44,10 @@ function init() {
     // this.whiteBody.animateInit();
     animateCarousel.call(this);
     // animateApp.call(this);
+    this.sound = new SoundEffect();
+    // console.log(sound.b.b1);
+    this.sound.loadSoundEffect().fan.play();
+    console.log(this.sound.loadSoundEffect().fan);
 }
 
 function animateCarousel() {
@@ -70,6 +75,9 @@ function animateCarousel() {
 function animateApp() {
     this.darkBody.animateFinal();
     this.whiteBody.animateFinal();
+    clock.setTimeout(function(){
+        this.sound.loadSoundEffect().fan.stop();
+    }.bind(this),600);
 }
 
 module.exports = SplashScreen;

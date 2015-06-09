@@ -68,6 +68,7 @@ function animateCarousel() {
 
 function animateApp() {
     this.darkBody.animateFinal();
+    this.whiteBody.animateFinal();
 }
 
 module.exports = SplashScreen;

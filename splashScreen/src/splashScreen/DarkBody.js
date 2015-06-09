@@ -1,13 +1,14 @@
 var Node = require('famous/core/Node');
 var DOMElement = require('famous/dom-renderables/DOMElement');
+var Size = require('famous/components/Size');
 
 function DarkBody(mount) {
     // Extend Node
     Node.call(this);
 
-    this.setMountPoint(.5, 1)
-        .setAlign(.5, 1)
-        .setProportionalSize(1, 1);
+    // this.setMountPoint(.5, 1)
+    //     .setAlign(.5, 1)
+    //     .setProportionalSize(1, 1);
 
     this.el = new DOMElement(this, { 
         classes: ['darkBody'],
@@ -42,7 +43,11 @@ DarkBody.prototype.animateFinal = function () {
     var h = (innerHeight - gap - headerHeight)/innerHeight;
     this.setMountPoint(.5, 1)
         .setAlign(.5, y)
-        .setProportionalSize(w, h);
+    var darksizeComponent = new Size(this);
+    darksizeComponent.setProportional(w, h, 0, {
+        duration: 600,
+        curve: 'outBounce'
+    });
 };
 
 module.exports = DarkBody;

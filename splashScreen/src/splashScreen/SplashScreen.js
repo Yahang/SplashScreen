@@ -5,6 +5,7 @@ var LogoButton = require('./LogoButton');
 var textButton = require('./TextButton');
 var FamousEngine = require('famous/core/FamousEngine');
 var clock = FamousEngine.getClock();
+var SoundEffect = require('./SoundEffect');
 
 function SplashScreen(mount) {
     // Extend Node
@@ -51,6 +52,9 @@ function init() {
     // this.whiteBody.animateInit();
     animateCarousel.call(this);
     // animateApp.call(this);
+    this.sound = new SoundEffect();
+    // console.log(sound.b.b1);
+    this.sound.loadSoundEffect().fan.play();
 }
 
 function animateCarousel() {
@@ -85,8 +89,9 @@ function animateApp() {
     this.whiteBody.animateFinal();
     this.logoButton.animateFinal();
 
-    //this.textButton = new textButton();
-   // this.textButton.animateFinal();
+    clock.setTimeout(function(){
+        this.sound.loadSoundEffect().fan.stop();
+    }.bind(this),600);
 }
 
 module.exports = SplashScreen;

@@ -47,7 +47,6 @@ function init() {
     this.sound = new SoundEffect();
     // console.log(sound.b.b1);
     this.sound.loadSoundEffect().fan.play();
-    console.log(this.sound.loadSoundEffect().fan);
 }
 
 function animateCarousel() {

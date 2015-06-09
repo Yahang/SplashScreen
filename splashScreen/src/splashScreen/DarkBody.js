@@ -22,16 +22,27 @@ function DarkBody(mount) {
 // Extend the prototype
 DarkBody.prototype = Object.create(Node.prototype);
 
-DarkBody.prototype.animateInit = function () {
-    this.setProportionalSize(1, 1);
+DarkBody.prototype.animateFull = function () {
+    this.setMountPoint(.5, 1)
+        .setAlign(.5, 1)
+        .setProportionalSize(1, 1);
 };
 
 DarkBody.prototype.animateHalf = function () {
-   this.setProportionalSize(1, .5);
+   this.setMountPoint(.5, 1)
+        .setAlign(.5, 1)
+        .setProportionalSize(1, .5);
 };
 
 DarkBody.prototype.animateFinal = function () {
-   this.setProportionalSize(.96, .9);
+    var gap = 10;
+    var headerHeight = 100;
+    var y = (innerHeight - gap)/innerHeight;
+    var w = (innerWidth-2*gap)/innerWidth;
+    var h = (innerHeight - gap - headerHeight)/innerHeight;
+    this.setMountPoint(.5, 1)
+        .setAlign(.5, y)
+        .setProportionalSize(w, h);
 };
 
 module.exports = DarkBody;

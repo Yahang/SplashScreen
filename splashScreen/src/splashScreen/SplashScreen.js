@@ -37,7 +37,35 @@ function makeWhiteBody() {
 }
 
 function init() {
-    this.darkBody.animateInit();
+    this.darkBody.animateFull();
     // this.whiteBody.animateInit();
+    animateCarousel.call(this);
+    // animateApp.call(this);
 }
+
+function animateCarousel() {
+    setTimeout(function(){
+        this.darkBody.animateHalf();
+    }.bind(this),1300);
+    setTimeout(function(){
+        this.darkBody.animateFull();
+    }.bind(this),2500);
+    setTimeout(function(){
+        this.darkBody.animateHalf();
+    }.bind(this),3300);
+    setTimeout(function(){
+        this.darkBody.animateFull();
+    }.bind(this),4500);
+    setTimeout(function(){
+        this.darkBody.animateHalf();
+    }.bind(this),5300);
+    setTimeout(function(){
+        animateApp.call(this);
+    }.bind(this),6000);
+}
+
+function animateApp() {
+    this.darkBody.animateFinal();
+}
+
 module.exports = SplashScreen;

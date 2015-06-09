@@ -11,7 +11,7 @@ function DarkBody(mount) {
         tagName: 'div',
         properties:{
             backgroundColor: "black",
-            zIndex: 5
+            zIndex: 20
         }
     });
 }

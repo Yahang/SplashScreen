@@ -1,6 +1,8 @@
 var Node = require('famous/core/Node');
 var DarkBody = require('./DarkBody');
 var WhiteBody = require('./WhiteBody');
+var FamousEngine = require('famous/core/FamousEngine');
+var clock = FamousEngine.getClock();
 
 function SplashScreen(mount) {
     // Extend Node
@@ -44,22 +46,22 @@ function init() {
 }
 
 function animateCarousel() {
-    setTimeout(function(){
+    clock.setTimeout(function(){
         this.darkBody.animateHalf();
     }.bind(this),1300);
-    setTimeout(function(){
+    clock.setTimeout(function(){
         this.darkBody.animateFull();
     }.bind(this),2500);
-    setTimeout(function(){
+    clock.setTimeout(function(){
         this.darkBody.animateHalf();
     }.bind(this),3300);
-    setTimeout(function(){
+    clock.setTimeout(function(){
         this.darkBody.animateFull();
     }.bind(this),4500);
-    setTimeout(function(){
+    clock.setTimeout(function(){
         this.darkBody.animateHalf();
     }.bind(this),5300);
-    setTimeout(function(){
+    clock.setTimeout(function(){
         animateApp.call(this);
     }.bind(this),6000);
 }

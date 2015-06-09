@@ -48,6 +48,7 @@ function init() {
 function animateCarousel() {
     clock.setTimeout(function(){
         this.darkBody.animateHalf();
+        this.whiteBody.animateInit();
     }.bind(this),1300);
     clock.setTimeout(function(){
         this.darkBody.animateFull();

@@ -6,14 +6,10 @@ function DarkBody(mount) {
     // Extend Node
     Node.call(this);
 
-    // this.setMountPoint(.5, 1)
-    //     .setAlign(.5, 1)
-    //     .setProportionalSize(1, 1);
-
     this.el = new DOMElement(this, { 
         classes: ['darkBody'],
         tagName: 'div',
-        properties: {
+        properties:{
             backgroundColor: "black",
             zIndex: 20
         }

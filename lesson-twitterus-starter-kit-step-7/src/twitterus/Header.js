@@ -1,6 +1,7 @@
 var Node = require('famous/core/Node');
 var DOMElement = require('famous/dom-renderables/DOMElement');
 var Align = require('famous/components/Align');
+var Easing = require('famous/transitions/Easing');
 
 function Header () {
     Node.call(this);

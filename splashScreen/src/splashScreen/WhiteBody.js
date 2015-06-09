@@ -1,8 +1,10 @@
 var Node = require('famous/core/Node');
 var DOMElement = require('famous/dom-renderables/DOMElement');
 var Position = require('famous/components/Position');
-var FamousEngine = require('famous/core/FamousEngine');
-var clock = FamousEngine.getClock();
+//var Easing = require('famous/transitions/Easing');
+var Size = require('famous/components/size');
+//var FamousEngine = require('famous/core/FamousEngine');
+//var clock = FamousEngine.getClock();
 
 function WhiteBody(mount) {
     // Extend Node
@@ -49,12 +51,18 @@ WhiteBody.prototype.animateInit = function () {
 
 WhiteBody.prototype.animateFinal = function () {
 	this.titleNode
-   	.setSizeMode('absolute', 'absolute')
-    .setAbsoluteSize(100, 50)
-    .setScale(0.5,0.5)
-   	.setAlign(0.5, 0.05)
-    .setMountPoint(0.5, 0.5)
-    .setOrigin(0.5, 0.5);
+   		.setSizeMode('absolute', 'absolute')
+    	//.setAbsoluteSize(100, 50)
+    	//.setScale(0.5,0.5)
+   		.setAlign(0.5, 0.05)
+    	.setMountPoint(0.5, 0.5)
+    	.setOrigin(0.5, 0.5);
+
+    var whiteSizeComponent = new Size(this.titleNode);
+    whiteSizeComponent.setProportional(100, 50, 0, {
+    	duration: 600,
+    	curve: 'outBounce'
+    });
 };
 
 function debug(){

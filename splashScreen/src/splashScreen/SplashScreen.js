@@ -1,6 +1,8 @@
 var Node = require('famous/core/Node');
 var DarkBody = require('./DarkBody');
 var WhiteBody = require('./WhiteBody');
+var LogoButton = require('./LogoButton');
+var textButton = require('./TextButton');
 var FamousEngine = require('famous/core/FamousEngine');
 var clock = FamousEngine.getClock();
 
@@ -11,6 +13,7 @@ function SplashScreen(mount) {
         .setAbsoluteSize(innerWidth, innerHeight);
     makeDarkBody.call(this);
     makeWhiteBody.call(this);
+    makeLogoButton.call(this);
     debug.call(this);
     init.call(this);
 }
@@ -38,6 +41,11 @@ function makeWhiteBody() {
     this.addChild(this.whiteBody);
 }
 
+function makeLogoButton(){
+    this.logoButton = new LogoButton();
+    this.addChild(this.logoButton);
+}
+
 function init() {
     this.darkBody.animateFull();
     // this.whiteBody.animateInit();
@@ -47,19 +55,24 @@ function init() {
 
 function animateCarousel() {
     clock.setTimeout(function(){
+        this.logoButton.clockwise();
         this.darkBody.animateHalf();
         this.whiteBody.animateInit();
     }.bind(this),1300);
     clock.setTimeout(function(){
-        this.darkBody.animateFull();
+        this.logoButton.clockwise();
+        this.darkBody.animateFull(); 
     }.bind(this),2500);
     clock.setTimeout(function(){
+        this.logoButton.clockwise();
         this.darkBody.animateHalf();
     }.bind(this),3300);
     clock.setTimeout(function(){
+        this.logoButton.clockwise();
         this.darkBody.animateFull();
     }.bind(this),4500);
     clock.setTimeout(function(){
+        this.logoButton.counterclockwise();
         this.darkBody.animateHalf();
     }.bind(this),5300);
     clock.setTimeout(function(){
@@ -70,6 +83,10 @@ function animateCarousel() {
 function animateApp() {
     this.darkBody.animateFinal();
     this.whiteBody.animateFinal();
+    this.logoButton.animateFinal();
+
+    //this.textButton = new textButton();
+   // this.textButton.animateFinal();
 }
 
 module.exports = SplashScreen;

@@ -1,11 +1,8 @@
 var Node = require('famous/core/Node');
 var DOMElement = require('famous/dom-renderables/DOMElement');
-var Position = require('famous/components/Position');
 var Scale = require('famous/components/Scale');
 var Size = require('famous/components/size');
 var Align = require('famous/components/Align');
-//var FamousEngine = require('famous/core/FamousEngine');
-//var clock = FamousEngine.getClock();
 
 function WhiteBody(mount) {
     // Extend Node
@@ -40,7 +37,6 @@ function WhiteBody(mount) {
     	tagName: 'div',
     	content: "Carousel"
     });
-
     //this.animateFinal();
 }
 

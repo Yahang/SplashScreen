@@ -3,6 +3,7 @@ var DOMElement = require('famous/dom-renderables/DOMElement');
 var Scale = require('famous/components/Scale');
 var Size = require('famous/components/size');
 var Align = require('famous/components/Align');
+var ButtonComp = require('./ButtonComp');
 
 function TextButton(mount) {
     // Extend Node

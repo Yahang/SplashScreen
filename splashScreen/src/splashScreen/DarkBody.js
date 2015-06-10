@@ -33,7 +33,7 @@ DarkBody.prototype.animateHalf = function () {
 
 DarkBody.prototype.animateFinal = function () {
     var gap = 10;
-    var headerHeight = 100;
+    var headerHeight = 75;
     var y = (innerHeight - gap)/innerHeight;
     var w = (innerWidth-2*gap)/innerWidth;
     var h = (innerHeight - gap - headerHeight)/innerHeight;

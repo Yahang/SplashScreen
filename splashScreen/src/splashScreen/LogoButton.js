@@ -5,6 +5,7 @@ var Transitionable = require('famous/transitions/Transitionable');
 var Scale = require('famous/components/Scale');
 var Size = require('famous/components/size');
 var Align = require('famous/components/Align');
+var ButtonComp = require('./ButtonComp');
 
 var angle = 0;
 var angleTransitionable = new Transitionable(angle);
@@ -20,7 +21,7 @@ function LogoButton(mount) {
     	.setOrigin(0.5, 0.5);
 
     this.createLogoButton();
-
+    
 }
 
 LogoButton.prototype = Object.create(Node.prototype);
@@ -45,6 +46,7 @@ LogoButton.prototype.createLogoButton = function () {
 
 
 	this.logoButtonFg = this.addChild();
+    var copm = new ButtonComp(this.logoButtonFg);
 
 	this.logoButtonFg
 		//.setSizeMode('absolute', 'absolute')

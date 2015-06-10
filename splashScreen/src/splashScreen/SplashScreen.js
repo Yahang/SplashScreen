@@ -2,7 +2,8 @@ var Node = require('famous/core/Node');
 var DarkBody = require('./DarkBody');
 var WhiteBody = require('./WhiteBody');
 var LogoButton = require('./LogoButton');
-var textButton = require('./TextButton');
+var TextButton = require('./TextButton');
+var CameraButton = require('./CameraButton');
 var FamousEngine = require('famous/core/FamousEngine');
 var clock = FamousEngine.getClock();
 var SoundEffect = require('./SoundEffect');
@@ -72,11 +73,11 @@ function animateCarousel() {
         this.darkBody.animateHalf();
     }.bind(this),3300);
     clock.setTimeout(function(){
-        this.logoButton.clockwise();
+        this.logoButton.counterclockwise();
         this.darkBody.animateFull();
     }.bind(this),4500);
     clock.setTimeout(function(){
-        this.logoButton.counterclockwise();
+        //this.logoButton.counterclockwise();
         this.darkBody.animateHalf();
     }.bind(this),5300);
     clock.setTimeout(function(){
@@ -88,6 +89,14 @@ function animateApp() {
     this.darkBody.animateFinal();
     this.whiteBody.animateFinal();
     this.logoButton.animateFinal();
+
+    var textButton = new TextButton();
+    this.addChild(textButton);
+    textButton.animateFinal();
+
+    var cameraButton = new CameraButton();
+    this.addChild(cameraButton);
+    cameraButton.animateFinal();
 
     clock.setTimeout(function(){
         this.sound.loadSoundEffect().fan.stop();

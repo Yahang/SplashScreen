@@ -17,7 +17,7 @@ function WhiteBody(mount) {
         classes: ['whiteBody'],
         tagName: 'div',
         properties: {
-            backgroundColor: "#FFFFCC",
+            backgroundColor: "White",
             zIndex: 10
         }
     });

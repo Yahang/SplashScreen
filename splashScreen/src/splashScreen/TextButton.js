@@ -1,6 +1,8 @@
 var Node = require('famous/core/Node');
 var DOMElement = require('famous/dom-renderables/DOMElement');
-var Size = require('famous/components/Size');
+var Scale = require('famous/components/Scale');
+var Size = require('famous/components/size');
+var Align = require('famous/components/Align');
 
 function TextButton(mount) {
     // Extend Node
@@ -16,9 +18,9 @@ function TextButton(mount) {
     this.el = new DOMElement(this, { 
         classes: ['TextButton'],
         tagName: 'div',
-        content: T,
+        content: 'T',
         properties:{
-            fontSize: window.innerWidth * .08+'px',
+            fontSize: innerWidth * .08+'px',
             textAlign: 'center',
             fontFamily: 'Baskerville',
             fontWeight: 'Bold',
@@ -33,8 +35,16 @@ TextButton.prototype = Object.create(Node.prototype);
 
 TextButton.prototype.animateFinal = function () {
     var alignComp = new Align(this);
-    alignComp.set(0.2, 0.9, 0, {
+    alignComp.set(0.2, 0.95, 0, {
         duration: 600,
         curve: 'outBounce'
     })
+
+    var whiteSizeComponent = new Scale(this);
+    whiteSizeComponent.set(1, 1, 1, {
+        duration: 600,
+        curve: 'outBounce'
+    });
 };
+
+module.exports = TextButton;

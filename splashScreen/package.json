@@ -1,7 +1,6 @@
 {
   "name": "engine-seed",
   "version": "1.0.0",
-  "repo": "https://github.com/Famous/engine-seed/",
   "description": "seed project for a browserified version of the Famous Ennge",
   "browser": "src/splashScreen/index.js",
   "scripts": {

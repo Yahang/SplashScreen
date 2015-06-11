@@ -48,7 +48,8 @@ LogoButton.prototype.createLogoButton = function () {
 
 
 	this.logoButtonFg = this.addChild();
-    var copm = new ButtonComp(this.logoButtonFg);
+    new ButtonComp(this.logoButtonFg);
+    // new ButtonComp(this.logoButtonBg);
 
 	this.logoButtonFg
 		//.setSizeMode('absolute', 'absolute')
@@ -61,7 +62,7 @@ LogoButton.prototype.createLogoButton = function () {
 		classes: ['LogoButtonFg'],
 		tagName: 'img',
 		properties:{
-             zIndex: 32
+             zIndex: 30
         }
     }).setAttribute('src', 'assets/imgs/logo/logo_fg.png');
 

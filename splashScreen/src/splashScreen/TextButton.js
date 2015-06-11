@@ -29,6 +29,8 @@ function TextButton(mount) {
             zIndex: 32
         }
     });
+
+    new ButtonComp(this);
 }
 
 // Extend the prototype

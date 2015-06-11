@@ -12,13 +12,14 @@ function ButtonComp (node) {
 	    //     console.log('end');
 	    // }
 	    if (type === 'touchstart') {
-	        console.log('start');
+	        node.setScale(1.5, 1.5, 1);
 	    }
 	    if (type === 'touchmove') {
-	        console.log('move');
+	    	// console.log(ev);
+	        node.setScale(1.5, 1.5, 1);
 	    }
 	    if (type === 'touchend') {
-	        console.log('end');
+	        node.setScale(1, 1, 1);
 	    }
 	    ev.stopPropagation();
 	}

@@ -49,18 +49,20 @@ function makeLogoButton(){
 }
 
 function init() {
+    this.sound = new SoundEffect();
     this.darkBody.animateFull();
     // this.whiteBody.animateInit();
+
+    this.logoButton.clockwise();
     animateCarousel.call(this);
     // animateApp.call(this);
-    this.sound = new SoundEffect();
     // console.log(sound.b.b1);
     this.sound.loadSoundEffect().fan.play();
 }
 
 function animateCarousel() {
     clock.setTimeout(function(){
-        this.logoButton.clockwise();
+        //this.logoButton.clockwise();
         this.darkBody.animateHalf();
         this.whiteBody.animateInit();
     }.bind(this),1300);
@@ -69,7 +71,7 @@ function animateCarousel() {
         this.darkBody.animateFull(); 
     }.bind(this),2500);
     clock.setTimeout(function(){
-        this.logoButton.clockwise();
+        //this.logoButton.clockwise();
         this.darkBody.animateHalf();
     }.bind(this),3300);
     clock.setTimeout(function(){

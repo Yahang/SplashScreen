@@ -6,6 +6,7 @@ var Scale = require('famous/components/Scale');
 var Size = require('famous/components/size');
 var Align = require('famous/components/Align');
 var ButtonComp = require('./ButtonComp');
+var SoundEffect = require('./SoundEffect');
 
 var angle = 0;
 var angleTransitionable = new Transitionable(angle);
@@ -21,6 +22,7 @@ function LogoButton(mount) {
     	.setOrigin(0.5, 0.5);
 
     this.createLogoButton();
+    this.sound = new SoundEffect();
     
 }
 
@@ -73,7 +75,6 @@ LogoButton.prototype.setSpinner = function () {
             this.logoButtonFg.requestUpdateOnNextTick(spinner);
         }.bind(this)
     });
-
     this.logoButtonFg.requestUpdate(spinner);
 };
 
@@ -83,6 +84,7 @@ LogoButton.prototype.clockwise = function (){
         duration: 1000,
         curve: 'inOutBounce'
     });
+    this.sound.loadSoundEffect().slide.play();
 };
 
 LogoButton.prototype.counterclockwise = function (){
@@ -91,6 +93,7 @@ LogoButton.prototype.counterclockwise = function (){
         duration: 1000,
         curve: 'inOutBounce'
     });
+    this.sound.loadSoundEffect().slide.play();
 };
 
 LogoButton.prototype.animateFinal = function (){

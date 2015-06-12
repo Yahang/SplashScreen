@@ -6,6 +6,7 @@ var Scale = require('famous/components/Scale');
 var Size = require('famous/components/size');
 var Align = require('famous/components/Align');
 var ButtonComp = require('./ButtonComp');
+var RotateButtComp = require('./RotateButtComp');
 var SoundEffect = require('./SoundEffect');
 
 var angle = 0;
@@ -48,8 +49,7 @@ LogoButton.prototype.createLogoButton = function () {
 
 
 	this.logoButtonFg = this.addChild();
-    new ButtonComp(this.logoButtonFg);
-    // new ButtonComp(this.logoButtonBg);
+    new RotateButtComp(this.logoButtonFg);
 
 	this.logoButtonFg
 		//.setSizeMode('absolute', 'absolute')

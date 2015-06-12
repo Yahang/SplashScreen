@@ -1,7 +1,6 @@
-var famous = require('famous');
-var Scale = famous.components.Scale;
 
-function ButtonComp (node) {
+
+function RotateButtComp (node) {
 	this.node = node;
 	this.id = node.addComponent(this);
 	// node.addUIEvent('click');
@@ -9,27 +8,23 @@ function ButtonComp (node) {
 	node.addUIEvent('touchmove');
 	node.addUIEvent('touchend');
 	node.onReceive = function onReceive(type, ev) {
-		var scaleComp = new Scale(node);
 	    // if (type === 'click') {
 	    //     console.log('end');
 	    // }
 	    if (type === 'touchstart') {
-	        scaleComp.set(1.5, 1.5, 1, {
-	        	duration: 200,
-	        	curve: 'inbounce'
-	        });
+	    	console.log(1);
+	        node.setOrigin(.5, .5, .5)
+	        	.setRotation(0, Math.PI/3, 0)
 	    }
 	    if (type === 'touchmove') {
-	    	scaleComp.set(1.5, 1.5, 1);
+	    	node.setOrigin(.5, .5, .5)
+	        	.setRotation(0, Math.PI/3, 0)
 	    }
 	    if (type === 'touchend') {
-	        scaleComp.set(1, 1, 1, {
-	        	duration: 200,
-	        	curve: 'inbounce'
-	        });
+	        node.setScale(1, 1, 1);
 	    }
 	    ev.stopPropagation();
 	}
 }
 
-module.exports = ButtonComp;
+module.exports = RotateButtComp;

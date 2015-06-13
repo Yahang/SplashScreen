@@ -8,9 +8,10 @@ var Opacity = require('famous/components/Opacity');
 function Video(mount) {
     // Extend Node
     Node.call(this);
+    this.src = '5S-1QGKYxuk';
     this.dom = new DOMElement(this, { 
 	    tagName: 'div',
-        content: '<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/5S-1QGKYxuk?rel=0&autoplay=1" frameborder="0"></iframe>',
+        content: '<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/' + this.src + '"?rel=0&autoplay=1 frameborder="0"></iframe>',
 	    properties: {
             textAlign: 'center',
             overflow: 'hidden',
@@ -26,12 +27,40 @@ function Video(mount) {
     this.opacity = new Opacity(this);
     this.overlayMode();
     this.clock = new Clock();
+    makeInput.call(this);
     setInterval(function(){
         window.focus();
     }, 1000);
 }
 
 Video.prototype = Object.create(Node.prototype);
+
+function makeInput () {
+    this.inputNode = this.addChild();
+    this.inputNode.setSizeMode('absolute', 'absolute', 'absolute').setAbsoluteSize(100, 30);
+    // this.inputNode.addUIEvent('paste');
+    new DOMElement(this.inputNode, { 
+        tagName: 'input',
+        attributes: {
+            id: 'youtubeInput',
+            type: 'text',
+            value: '5S-1QGKYxuk'
+        },
+        properties: {
+            zIndex: 50
+        }
+    });
+    handleEvent.call(this);
+}
+
+function handleEvent() {
+    setTimeout(function(){
+        $("#youtubeInput").on("paste", function(e) {
+            this.src = $("#youtubeInput").val();
+            this.dom.setContent('<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/' + this.src + '"?rel=0&autoplay=1 frameborder="0"></iframe>');
+        }.bind(this) );
+    }.bind(this), 100);
+}
 
 Video.prototype.incr = function incr() {
     var o = this.getOpacity();

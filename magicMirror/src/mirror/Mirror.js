@@ -1,4 +1,6 @@
-var Node = require('famous/core/Node');
+var famous = require('famous');
+var Node = famous.core.Node;
+var DOMElement = famous.domRenderables.DOMElement;
 var Camera = require('./Camera');
 var Video = require('./Video');
 

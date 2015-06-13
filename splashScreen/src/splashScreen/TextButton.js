@@ -4,6 +4,7 @@ var Scale = require('famous/components/Scale');
 var Size = require('famous/components/size');
 var Align = require('famous/components/Align');
 var ButtonComp = require('./ButtonComp');
+var RotateButtComp = require('./RotateButtComp');
 
 function TextButton(mount) {
     // Extend Node
@@ -30,7 +31,8 @@ function TextButton(mount) {
         }
     });
 
-    new ButtonComp(this);
+    // new ButtonComp(this);
+    new RotateButtComp(this);
 }
 
 // Extend the prototype

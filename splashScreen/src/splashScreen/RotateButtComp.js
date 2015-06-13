@@ -18,10 +18,11 @@ function RotateButtComp (node) {
 	    }
 	    if (type === 'touchmove') {
 	    	node.setOrigin(.5, .5, .5)
-	        	.setRotation(0, Math.PI/3, 0)
+	        	.setRotation(0, 0, 0)
 	    }
 	    if (type === 'touchend') {
-	        node.setScale(1, 1, 1);
+	        node.setOrigin(.5, .5, .5)
+	        	.setRotation(0, -Math.PI/3, 0)
 	    }
 	    ev.stopPropagation();
 	}

@@ -56,8 +56,7 @@ function makeInput () {
 function handleEvent() {
     setTimeout(function(){
         $("#youtubeInput").on("paste", function(e) {
-            this.src = $("#youtubeInput").val();
-            this.dom.setContent('<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/' + this.src + '"?rel=0&autoplay=1 frameborder="0"></iframe>');
+            this.dom.setContent('<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/' + $("#youtubeInput").val() + '"?rel=0&autoplay=1 frameborder="0"></iframe>');
         }.bind(this) );
     }.bind(this), 100);
 }

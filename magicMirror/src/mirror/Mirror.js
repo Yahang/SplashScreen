@@ -9,25 +9,40 @@ function Mirror(mount) {
         .setAbsoluteSize(innerWidth, innerHeight);
     makeCamera.call(this);
     makeVideo.call(this);
+    handleKeyboard.call(this);
 }
 
 // Extend the prototype
 Mirror.prototype = Object.create(Node.prototype);
 
+function handleKeyboard() {
+    this.keydownHandler = function (event) {
+        if (event.keyCode == 32) {
+            this.video.toggleMode();
+            this.camera .toggleMode();
+        } else if (event.keyCode == 39) {
+        } else if (event.keyCode == 37) {
+        } else if (event.keyCode == 38) {
+            this.video.incr();
+        } else if (event.keyCode == 40) {
+            this.video.decr();
+        }
+    }.bind(this);
+
+    window.addEventListener('keydown', this.keydownHandler);
+
+}
+
 // make the camera
 function makeCamera () {
-    this.camera = new Camera();
+    window.camera = this.camera = new Camera();
     this.addChild(this.camera);
-    this.camera.setOpacity(.5)
-        .setProportionalSize(1, 1, 1);
 }
 
 // make the video
 function makeVideo () {
-    this.video = new Video();
+    window.video = this.video = new Video();
     this.addChild(this.video);
-    this.video.setOpacity(1)
-        .setProportionalSize(1, 1, 1);
 }
 
 module.exports = Mirror;

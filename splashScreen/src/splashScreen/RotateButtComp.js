@@ -1,4 +1,5 @@
-
+var famous = require('famous');
+var Rotation = famous.components.Rotation;
 
 function RotateButtComp (node) {
 	this.node = node;
@@ -8,21 +9,27 @@ function RotateButtComp (node) {
 	node.addUIEvent('touchmove');
 	node.addUIEvent('touchend');
 	node.onReceive = function onReceive(type, ev) {
+		var RotComp = new Rotation(node);
 	    // if (type === 'click') {
 	    //     console.log('end');
 	    // }
 	    if (type === 'touchstart') {
-	    	console.log(1);
 	        node.setOrigin(.5, .5, .5)
-	        	.setRotation(0, Math.PI/3, 0)
+	        RotComp.set(0, Math.PI/4, 0, {
+	        	duration: 200,
+	        	curve: 'outbounce'
+	        });
 	    }
-	    if (type === 'touchmove') {
-	    	node.setOrigin(.5, .5, .5)
-	        	.setRotation(0, 0, 0)
-	    }
+	    // if (type === 'touchmove') {
+	    // 	node.setOrigin(.5, .5, .5)
+	    //     	.setRotation(0, 0, 0);
+	    // }
 	    if (type === 'touchend') {
 	        node.setOrigin(.5, .5, .5)
-	        	.setRotation(0, -Math.PI/3, 0)
+	        RotComp.set(0, -Math.PI/4, 0, {
+	        	duration: 200,
+	        	curve: 'outbounce'
+	        });
 	    }
 	    ev.stopPropagation();
 	}

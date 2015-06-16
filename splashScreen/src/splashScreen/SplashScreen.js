@@ -7,6 +7,7 @@ var CameraButton = require('./CameraButton');
 var FamousEngine = require('famous/core/FamousEngine');
 var clock = FamousEngine.getClock();
 var SoundEffect = require('./SoundEffect');
+var DragComp = require('./DragComp');
 
 function SplashScreen(mount) {
     // Extend Node
@@ -99,6 +100,8 @@ function animateApp() {
     var cameraButton = new CameraButton();
     this.addChild(cameraButton);
     cameraButton.animateFinal();
+
+    var dragcomp = new DragComp(this);
 
     clock.setTimeout(function(){
         this.sound.loadSoundEffect().fan.stop();

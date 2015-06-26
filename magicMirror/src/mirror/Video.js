@@ -8,10 +8,10 @@ var Opacity = require('famous/components/Opacity');
 function Video(mount) {
     // Extend Node
     Node.call(this);
-    this.src = '5S-1QGKYxuk';
+    this.src = '';
     this.dom = new DOMElement(this, { 
 	    tagName: 'div',
-        content: '<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/' + this.src + '"?rel=0&autoplay=1 frameborder="0"></iframe>',
+        content: '<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/5S-1QGKYxuk?rel=0&autoplay=1 frameborder="0"></iframe>',
 	    properties: {
             textAlign: 'center',
             overflow: 'hidden',
@@ -56,6 +56,7 @@ function makeInput () {
 function handleEvent() {
     setTimeout(function(){
         $("#youtubeInput").on("paste", function(e) {
+            console.log(e);
             this.dom.setContent('<iframe width="'+innerWidth *.8+'" height="100%" src="http://www.youtube.com/embed/' + $("#youtubeInput").val() + '"?rel=0&autoplay=1 frameborder="0"></iframe>');
         }.bind(this) );
     }.bind(this), 100);
